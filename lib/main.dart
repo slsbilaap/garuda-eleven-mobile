@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:garuda_eleven/menu.dart';
+import 'package:garuda_eleven/screens/menu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
-        .copyWith(secondary: Colors.blueAccent[400]),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blueGrey)
+        .copyWith(secondary: Colors.blueGrey[200]),
       ),
       home: MyHomePage(),
     );
