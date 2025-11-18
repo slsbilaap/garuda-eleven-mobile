@@ -68,3 +68,39 @@ Layout Padding digunakan untuk memberikan jarak antar elemen sehingga lebih muda
 
 ### 4. Bagaimana kamu menyesuaikan warna tema agar aplikasi Football Shop memiliki identitas visual yang konsisten dengan brand toko?
 Warna tema diatur pada file main.dart dimana primary swatch digunakan untuk AppBar, tombol, dan ikon utama dan secondary digunakan pada background drawer atau highlight. Pada tugas ini, saya menggunakan warna blueGrey sebagai warna tema sehingga nantinya semua halaman bisa otomatis mengikuti warna ini tanpa setting manual.
+
+## **Tugas 9**
+
+### 1. Jelaskan mengapa kita perlu membuat model Dart saat mengambil/mengirim data JSON? Apa konsekuensinya jika langsung memetakan Map<String, dynamic> tanpa model (terkait validasi tipe, null-safety, maintainability)?
+
+
+### 2. Apa fungsi package http dan CookieRequest dalam tugas ini? Jelaskan perbedaan peran http vs CookieRequest.
+Package http merupakan package dasar yang menyediakan http.get(), http.post(), http.put(), dll yang digunakan dalam komunikasi network. CookieRequest merupakan class wrapper yang dibuat menggunakan package http dan bertujuan mengelola state (cookie) sesuai request. Perbedaannya, http merupakan alat sementara CookieRequest merupakan solusi yang dibangun di atas http untuk menangani autentikasi berbasis cookie.
+
+### 3. Jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+CookieRequest berisi state (cookie) yang diperlukan oleh semua komponen aplikasi Flutter. Pada halaman login, instance CookieRequest yang dibagikan digunakan sebelum kemudian memanggil login() dan menyimpan sessionid. sessionid ini membuat server bisa mengenali pengguna yang login sehingga bisa menampilkan output yang sesuai. Jika tidak dibagikan, halaman login dan halaman home (misalnya) masing-masing akan membuat instance baru sehingga ketika ingin mengambil data, server melihat requestnya tidak memiliki cookie dan menganggap pengguna adalah AnonymousUser. Dengan begitu, server menolak akses ke data dan pengguna tidak mendapatkan output yang diinginkan.
+
+### 4. Jelaskan konfigurasi konektivitas yang diperlukan agar Flutter dapat berkomunikasi dengan Django. Mengapa kita perlu menambahkan 10.0.2.2 pada ALLOWED_HOSTS, mengaktifkan CORS dan pengaturan SameSite/cookie, dan menambahkan izin akses internet di Android? Apa yang akan terjadi jika konfigurasi tersebut tidak dilakukan dengan benar?
+
+
+### 5. Jelaskan mekanisme pengiriman data mulai dari input hingga dapat ditampilkan pada Flutter.
+
+### 6. Jelaskan mekanisme autentikasi dari login, register, hingga logout. Mulai dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+
+### 7. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+1. Memperbaiki kode pada proyek django (sebelumnya ada error).
+2. Membuat app baru pada proyek django (authentication), membuat file-filenya (termasuk membuat fungsi login), dan mengintegrasikan Django ke emulator android.
+3. Menginstall package yang dibutuhkan.
+4. Memodifikasi kode flutter untuk menyediakan CookieRequest (main.dart).
+5. Membuat login.dart dan mengatur agar pengguna yang membuka web harus login terlebih dahulu.
+6. Membuat fungsi register pada django dan menambahkan pathnya.
+7. Membuat register.dart dan menghubungkannya dengan file login.dart (membuat flow agar user baru bisa register sebelum login).
+8. Membuat model dengan data dari endpoint JSON proyek django.
+9. Menambahkan package http dan memperbolehkan akses internet pada flutter.
+10. Menambahkan endpoint proxy untuk mengatasi masalah CORS pada gambar (agar flutter bisa mengakses gambar).
+11. Membuat products_entry_card.dart dan products_entry_list.dart untuk handling card product dan menampilkan produk.
+12. Membuat navigasi ke tombol menampilkan produk apabila ditekan "All Products".
+13. Menambahkan fungsi pada views.py untuk add product pada flutter.
+14. Menyesuaikan warna pada aplikasi flutter.
+15. Menghubungkan form flutter dengan CookieRequest sehingga produk bisa ditambahkan dari flutter.
+16. Mengimplementasikan logout pada flutter dengan menghubungkan CookieRequest dan menambahkan kode agar ketika menekan card "Logout", pengguna bisa logout.

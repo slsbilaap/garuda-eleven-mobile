@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:garuda_eleven/screens/menu.dart';
 import 'package:garuda_eleven/screens/productlist_form.dart';
+import 'package:garuda_eleven/screens/products_entry_list.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -70,9 +71,9 @@ class LeftDrawer extends StatelessWidget {
             title: const Text('View Product'),
             // Redirection ke MyHomePage
             onTap: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MyHomePage()),
+                MaterialPageRoute(builder: (context) => const ProductsEntryListPage()),
               );
             },
           )
