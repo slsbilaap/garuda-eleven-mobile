@@ -12,6 +12,7 @@ class MyHomePage extends StatelessWidget {
     ItemHomepage("All Products", Icons.shopping_bag, Colors.blue),
     ItemHomepage("My Products", Icons.favorite, Colors.green),
     ItemHomepage("Create Product", Icons.add_circle, Colors.red),
+    ItemHomepage("Logout", Icons.logout, Colors.blueGrey)
   ];
 
   @override
@@ -31,8 +32,7 @@ class MyHomePage extends StatelessWidget {
       drawer: LeftDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: ListView(
           children: [
             // Row untuk menampilkan 3 InfoCard secara horizontal.
             Row(
@@ -58,7 +58,7 @@ class MyHomePage extends StatelessWidget {
                     ),
                   ),
                   GridView.count(
-                    primary: true,
+                    primary: false,
                     padding: const EdgeInsets.all(20),
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
