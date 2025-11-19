@@ -7,7 +7,8 @@ import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 
 class ProductsEntryListPage extends StatefulWidget {
-  const ProductsEntryListPage({super.key});
+  final String filter;
+  const ProductsEntryListPage({super.key, required this.filter});
 
   @override
   State<ProductsEntryListPage> createState() => _ProductsEntryListPageState();
@@ -18,12 +19,14 @@ class _ProductsEntryListPageState extends State<ProductsEntryListPage> {
     // DONE: Replace the URL with your app's URL and don't forget to add a trailing slash (/)!
     // To connect Android emulator with Django on localhost, use URL http://10.0.2.2/
     // If you using chrome,  use URL http://localhost:8000
-    
-    final response = await request.get('http://localhost:8000/json/');
-    
+
+    final response = await request.get(
+      'http://localhost:8000/json/?filter=${widget.filter}',
+    );
+
     // Decode response to json format
     var data = response;
-    
+
     // Convert json data to productsEntry objects
     List<ProductsEntry> listproducts = [];
     for (var d in data) {
@@ -55,7 +58,7 @@ class _ProductsEntryListPageState extends State<ProductsEntryListPage> {
                 children: [
                   Text(
                     'There are no products in Garuda Eleven yet.',
-                    style: TextStyle(fontSize: 20, color: Color(0xff59A5D8)),
+                    style: TextStyle(fontSize: 20, color: Colors.blueGrey),
                   ),
                   SizedBox(height: 8),
                 ],
@@ -70,9 +73,8 @@ class _ProductsEntryListPageState extends State<ProductsEntryListPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ProductsDetailPage(
-                          products: snapshot.data![index],
-                        ),
+                        builder: (context) =>
+                            ProductsDetailPage(products: snapshot.data![index]),
                       ),
                     );
                   },

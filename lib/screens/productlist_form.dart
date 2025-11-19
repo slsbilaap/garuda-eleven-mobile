@@ -258,7 +258,7 @@ class _ProductsFormPageState extends State<ProductsFormPage> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const ProductsEntryListPage()),
+                                  builder: (context) => const ProductsEntryListPage(filter: 'user')),
                             );
                           } else {
                             ScaffoldMessenger.of(context)
